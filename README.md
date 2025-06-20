@@ -1,9 +1,9 @@
 directory structure for the project, sub directories depends on u what kind of stuff ur using
 ```
 zerowastedrop/
-├── client/             # React or FlutterFlow frontend
+├── client/             # FlutterFlow frontend
 ├── contracts/          # Solidity smart contracts
-├── backend/            # Node.js or Firebase functions
+├── backend/            # Firebase functions
 ├── ai-edge/            # Python scripts for AI on camera/sensor devices
 ├── scripts/            # Deployment and CI/CD scripts
 ├── docs/               # Documentation, architecture diagrams
