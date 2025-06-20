@@ -10,5 +10,4 @@ zerowastedrop/
 ├── README.md
 ├── .env
 ```
-add the .gitignore file in the root directory if any one of u is using rather than creating in one of the sub directory
-make sure to create a separate branch with ur name
+add the .gitignore file in the root directory if any one of u is using rather than creating in one of the sub directory, make sure to create a separate branch with ur name
