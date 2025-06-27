@@ -32,10 +32,7 @@ src/
 ## How to run
 
 1. Clone the Repo
-```bash
-git clone https://github.com/your-username/zerowastedrop.git
-cd zerowastedrop
-```
+  
 2. Install Dependencies
 ```bash
 npm install
