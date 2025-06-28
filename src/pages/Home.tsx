@@ -1,4 +1,3 @@
-import React from 'react';
 import { Link } from 'react-router-dom';
 import { MapPin, Clock, Users, Recycle, TrendingUp, Award } from 'lucide-react';
 import { StatsCard } from '../components/StatsCard';
