@@ -1,4 +1,3 @@
-// import React from 'react'; 
 import { Link, useLocation } from 'react-router-dom';
 import {
   MapPin,
@@ -27,16 +26,17 @@ export function Header() {
     <header className="bg-white dark:bg-gray-800 shadow-sm border-b border-gray-200 dark:border-gray-700 sticky top-0 z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
-          {/* Logo / Title */}
+          {/* Left: Logo */}
           <div className="flex items-center">
             <h1 className="text-xl font-bold text-green-600 dark:text-green-400">
               ZeroWasteDrop
             </h1>
           </div>
 
-          {/* Desktop Nav + Theme Toggle */}
-          <div className="flex items-center space-x-6">
-            <nav className="hidden md:flex space-x-8">
+          {/* Right: Nav, Toggle, Badge */}
+          <div className="flex items-center space-x-4">
+            {/* Desktop Nav */}
+            <nav className="hidden md:flex space-x-6">
               {navItems.map(({ path, icon: Icon, label }) => (
                 <Link
                   key={path}
@@ -66,6 +66,21 @@ export function Header() {
                 <Sun className="w-5 h-5 text-yellow-400" />
               )}
             </button>
+
+            {/* Bolt Badge - Shown on all screen sizes */}
+            <div>
+              <a
+                href="https://bolt.new"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center px-3 py-1.5 bg-gradient-to-r from-blue-600 to-purple-600 text-white text-sm font-medium rounded-full hover:from-blue-700 hover:to-purple-700 transition-all duration-200 shadow-sm hover:shadow-md"
+              >
+                <svg className="w-4 h-4 mr-2" viewBox="0 0 24 24" fill="currentColor">
+                  <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+                </svg>
+                Built with Bolt
+              </a>
+            </div>
           </div>
         </div>
       </div>

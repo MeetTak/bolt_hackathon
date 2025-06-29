@@ -130,6 +130,26 @@ export function Home() {
           </Link>
         </div>
       </div>
+        <div className="mt-12 text-center">
+          <div className="inline-flex items-center px-4 py-2 bg-gray-100 dark:bg-gray-800 rounded-full text-sm text-gray-600 dark:text-gray-300">
+            <svg
+              className="w-4 h-4 mr-2 text-blue-600 dark:text-blue-400"
+              viewBox="0 0 24 24"
+              fill="currentColor"
+            >
+              <path d="M13 10V3L4 14h7v7l9-11h-7z" />
+            </svg>
+            Built with{' '}
+            <a
+              href="https://bolt.new"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="ml-1 font-medium text-blue-600 dark:text-blue-400 hover:text-blue-700 dark:hover:text-blue-300 transition-colors"
+            >
+            Bolt.new
+            </a>{' '}
+          </div>
+        </div>
     </div>
   );
 }
