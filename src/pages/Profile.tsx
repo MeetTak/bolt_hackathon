@@ -26,24 +26,24 @@ export function Profile() {
   ];
 
   return (
-    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+    <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-gray-900 dark:text-gray-100">
       {/* Profile Header */}
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
         <div className="flex items-center">
-          <div className="bg-green-100 p-4 rounded-full mr-6">
+          <div className="bg-green-100 dark:bg-green-900 p-4 rounded-full mr-6">
             <User className="w-12 h-12 text-green-600" />
           </div>
           <div className="flex-1">
-            <h1 className="text-2xl font-bold text-gray-900">John Doe</h1>
-            <p className="text-gray-600">john.doe@email.com</p>
+            <h1 className="text-2xl font-bold">John Doe</h1>
+            <p className="text-gray-600 dark:text-gray-400">john.doe@email.com</p>
             <div className="flex items-center mt-2">
               <Award className="w-4 h-4 text-yellow-500 mr-2" />
-              <span className="text-sm font-medium text-yellow-600">{userStats.communityRank}</span>
-              <span className="mx-2 text-gray-300">•</span>
-              <span className="text-sm text-gray-600">{userStats.totalPoints} points</span>
+              <span className="text-sm font-medium text-yellow-600 dark:text-yellow-400">{userStats.communityRank}</span>
+              <span className="mx-2 text-gray-300 dark:text-gray-500">•</span>
+              <span className="text-sm text-gray-600 dark:text-gray-400">{userStats.totalPoints} points</span>
             </div>
           </div>
-          <button className="flex items-center px-4 py-2 text-gray-600 hover:text-gray-800 transition-colors">
+          <button className="flex items-center px-4 py-2 text-gray-600 dark:text-gray-300 hover:text-gray-800 dark:hover:text-white transition-colors">
             <Settings className="w-5 h-5 mr-2" />
             Settings
           </button>
@@ -53,60 +53,71 @@ export function Profile() {
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
         {/* Stats */}
         <div className="lg:col-span-2">
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6 mb-8">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Your Impact</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6 mb-8">
+            <h2 className="text-xl font-semibold mb-6">Your Impact</h2>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-6">
-              <div className="text-center">
-                <div className="bg-purple-100 p-3 rounded-lg mb-2 mx-auto w-fit">
-                  <MapPin className="w-6 h-6 text-purple-600" />
+              {[
+                {
+                  label: 'Spots Adopted',
+                  count: userStats.spotsAdopted,
+                  icon: <MapPin className="w-6 h-6 text-purple-600" />,
+                  bg: 'bg-purple-100 dark:bg-purple-900'
+                },
+                {
+                  label: 'Reports Submitted',
+                  count: userStats.reportsSubmitted,
+                  icon: <TrendingUp className="w-6 h-6 text-blue-600" />,
+                  bg: 'bg-blue-100 dark:bg-blue-900'
+                },
+                {
+                  label: 'Items Donated',
+                  count: userStats.itemsDonated,
+                  icon: <Award className="w-6 h-6 text-green-600" />,
+                  bg: 'bg-green-100 dark:bg-green-900'
+                },
+                {
+                  label: 'Months Active',
+                  count: 11,
+                  icon: <Calendar className="w-6 h-6 text-orange-600" />,
+                  bg: 'bg-orange-100 dark:bg-orange-900'
+                },
+              ].map((stat, idx) => (
+                <div key={idx} className="text-center">
+                  <div className={`${stat.bg} p-3 rounded-lg mb-2 mx-auto w-fit`}>
+                    {stat.icon}
+                  </div>
+                  <div className="text-2xl font-bold">{stat.count}</div>
+                  <div className="text-sm text-gray-600 dark:text-gray-400">{stat.label}</div>
                 </div>
-                <div className="text-2xl font-bold text-gray-900">{userStats.spotsAdopted}</div>
-                <div className="text-sm text-gray-600">Spots Adopted</div>
-              </div>
-              <div className="text-center">
-                <div className="bg-blue-100 p-3 rounded-lg mb-2 mx-auto w-fit">
-                  <TrendingUp className="w-6 h-6 text-blue-600" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900">{userStats.reportsSubmitted}</div>
-                <div className="text-sm text-gray-600">Reports Submitted</div>
-              </div>
-              <div className="text-center">
-                <div className="bg-green-100 p-3 rounded-lg mb-2 mx-auto w-fit">
-                  <Award className="w-6 h-6 text-green-600" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900">{userStats.itemsDonated}</div>
-                <div className="text-sm text-gray-600">Items Donated</div>
-              </div>
-              <div className="text-center">
-                <div className="bg-orange-100 p-3 rounded-lg mb-2 mx-auto w-fit">
-                  <Calendar className="w-6 h-6 text-orange-600" />
-                </div>
-                <div className="text-2xl font-bold text-gray-900">11</div>
-                <div className="text-sm text-gray-600">Months Active</div>
-              </div>
+              ))}
             </div>
           </div>
 
           {/* Recent Activity */}
-          <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-            <h2 className="text-xl font-semibold text-gray-900 mb-6">Recent Activity</h2>
+          <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+            <h2 className="text-xl font-semibold mb-6">Recent Activity</h2>
             <div className="space-y-4">
               {recentActivity.map((activity) => (
-                <div key={activity.id} className="flex items-center p-3 bg-gray-50 rounded-lg">
-                  <div className={`p-2 rounded-lg mr-4 ${
-                    activity.type === 'adopt' ? 'bg-purple-100' :
-                    activity.type === 'report' ? 'bg-red-100' :
-                    activity.type === 'update' ? 'bg-blue-100' :
-                    'bg-green-100'
-                  }`}>
+                <div key={activity.id} className="flex items-center p-3 bg-gray-50 dark:bg-gray-700 rounded-lg">
+                  <div
+                    className={`p-2 rounded-lg mr-4 ${
+                      activity.type === 'adopt'
+                        ? 'bg-purple-100 dark:bg-purple-900'
+                        : activity.type === 'report'
+                        ? 'bg-red-100 dark:bg-red-900'
+                        : activity.type === 'update'
+                        ? 'bg-blue-100 dark:bg-blue-900'
+                        : 'bg-green-100 dark:bg-green-900'
+                    }`}
+                  >
                     {activity.type === 'adopt' && <MapPin className="w-4 h-4 text-purple-600" />}
                     {activity.type === 'report' && <TrendingUp className="w-4 h-4 text-red-600" />}
                     {activity.type === 'update' && <Settings className="w-4 h-4 text-blue-600" />}
                     {activity.type === 'donate' && <Award className="w-4 h-4 text-green-600" />}
                   </div>
                   <div className="flex-1">
-                    <p className="text-sm font-medium text-gray-900">{activity.action}</p>
-                    <p className="text-xs text-gray-600">{activity.date}</p>
+                    <p className="text-sm font-medium">{activity.action}</p>
+                    <p className="text-xs text-gray-600 dark:text-gray-400">{activity.date}</p>
                   </div>
                 </div>
               ))}
@@ -115,35 +126,37 @@ export function Profile() {
         </div>
 
         {/* Achievements */}
-        <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
-          <h2 className="text-xl font-semibold text-gray-900 mb-6">Achievements</h2>
+        <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
+          <h2 className="text-xl font-semibold mb-6">Achievements</h2>
           <div className="space-y-4">
-            {achievements.map((achievement) => (
+            {achievements.map((a) => (
               <div
-                key={achievement.id}
+                key={a.id}
                 className={`p-4 rounded-lg border ${
-                  achievement.earned
-                    ? 'border-green-200 bg-green-50'
-                    : 'border-gray-200 bg-gray-50'
+                  a.earned
+                    ? 'border-green-200 bg-green-50 dark:border-green-700 dark:bg-green-900'
+                    : 'border-gray-200 bg-gray-50 dark:border-gray-600 dark:bg-gray-700'
                 }`}
               >
                 <div className="flex items-center mb-2">
-                  <span className="text-2xl mr-3">{achievement.icon}</span>
+                  <span className="text-2xl mr-3">{a.icon}</span>
                   <div className="flex-1">
-                    <h3 className={`font-medium ${
-                      achievement.earned ? 'text-green-900' : 'text-gray-600'
-                    }`}>
-                      {achievement.name}
+                    <h3
+                      className={`font-medium ${
+                        a.earned ? 'text-green-900 dark:text-green-100' : 'text-gray-600 dark:text-gray-300'
+                      }`}
+                    >
+                      {a.name}
                     </h3>
-                    {achievement.earned && (
-                      <span className="text-xs text-green-600 font-medium">EARNED</span>
-                    )}
+                    {a.earned && <span className="text-xs text-green-600 dark:text-green-300 font-medium">EARNED</span>}
                   </div>
                 </div>
-                <p className={`text-sm ${
-                  achievement.earned ? 'text-green-700' : 'text-gray-600'
-                }`}>
-                  {achievement.description}
+                <p
+                  className={`text-sm ${
+                    a.earned ? 'text-green-700 dark:text-green-300' : 'text-gray-600 dark:text-gray-400'
+                  }`}
+                >
+                  {a.description}
                 </p>
               </div>
             ))}

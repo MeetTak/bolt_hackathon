@@ -10,7 +10,7 @@ import { AdoptSpot } from './pages/AdoptSpot';
 function App() {
   return (
     <Router>
-      <div className="min-h-screen bg-gray-50">
+      <div className="min-h-screen bg-gray-50 dark:bg-gray-950 text-gray-900 dark:text-white">
         <Header />
         <main className="pb-16">
           <Routes>

@@ -9,28 +9,27 @@ export function Report() {
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle form submission
     console.log({ reportType, description, location, urgency });
     alert('Report submitted successfully!');
   };
 
   return (
-    <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
-      <div className="bg-white rounded-xl shadow-sm border border-gray-200 p-6">
+    <div className="max-w-2xl mx-auto px-4 sm:px-6 lg:px-8 py-8 text-gray-900 dark:text-gray-100">
+      <div className="bg-white dark:bg-gray-800 rounded-xl shadow-sm border border-gray-200 dark:border-gray-700 p-6">
         <div className="flex items-center mb-6">
-          <div className="bg-red-100 p-3 rounded-lg mr-4">
+          <div className="bg-red-100 dark:bg-red-900 p-3 rounded-lg mr-4">
             <AlertTriangle className="w-6 h-6 text-red-600" />
           </div>
           <div>
-            <h1 className="text-2xl font-bold text-gray-900">Report an Issue</h1>
-            <p className="text-gray-600">Help keep our community spots clean and functional</p>
+            <h1 className="text-2xl font-bold">Report an Issue</h1>
+            <p className="text-gray-600 dark:text-gray-400">Help keep our community spots clean and functional</p>
           </div>
         </div>
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Report Type */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
               What's the issue?
             </label>
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-3">
@@ -44,8 +43,8 @@ export function Report() {
                   key={option.value}
                   className={`flex items-center p-4 border rounded-lg cursor-pointer transition-colors ${
                     reportType === option.value
-                      ? 'border-green-500 bg-green-50'
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? 'border-green-500 bg-green-50 dark:bg-green-900'
+                      : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-500'
                   }`}
                 >
                   <input
@@ -57,7 +56,7 @@ export function Report() {
                     className="sr-only"
                   />
                   <span className="text-2xl mr-3">{option.icon}</span>
-                  <span className="font-medium text-gray-900">{option.label}</span>
+                  <span className="font-medium">{option.label}</span>
                 </label>
               ))}
             </div>
@@ -65,24 +64,24 @@ export function Report() {
 
           {/* Location */}
           <div>
-            <label htmlFor="location" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="location" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Location
             </label>
             <div className="relative">
-              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 w-5 h-5" />
+              <MapPin className="absolute left-3 top-1/2 transform -translate-y-1/2 text-gray-400 dark:text-gray-500 w-5 h-5" />
               <input
                 type="text"
                 id="location"
                 value={location}
                 onChange={(e) => setLocation(e.target.value)}
                 placeholder="Enter address or spot name"
-                className="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+                className="w-full pl-10 pr-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
                 required
               />
             </div>
             <button
               type="button"
-              className="mt-2 text-sm text-green-600 hover:text-green-700 font-medium"
+              className="mt-2 text-sm text-green-600 dark:text-green-400 hover:text-green-700 font-medium"
             >
               Use current location
             </button>
@@ -90,7 +89,7 @@ export function Report() {
 
           {/* Urgency Level */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-3">
               Urgency Level
             </label>
             <div className="flex space-x-4">
@@ -103,8 +102,8 @@ export function Report() {
                   key={option.value}
                   className={`flex-1 flex items-center justify-center p-3 border rounded-lg cursor-pointer transition-colors ${
                     urgency === option.value
-                      ? `border-${option.color}-500 bg-${option.color}-50`
-                      : 'border-gray-200 hover:border-gray-300'
+                      ? `border-${option.color}-500 bg-${option.color}-50 dark:bg-${option.color}-900`
+                      : 'border-gray-200 dark:border-gray-700 hover:border-gray-300 dark:hover:border-gray-500'
                   }`}
                 >
                   <input
@@ -115,7 +114,7 @@ export function Report() {
                     onChange={(e) => setUrgency(e.target.value)}
                     className="sr-only"
                   />
-                  <span className="font-medium text-gray-900">{option.label}</span>
+                  <span className="font-medium">{option.label}</span>
                 </label>
               ))}
             </div>
@@ -123,7 +122,7 @@ export function Report() {
 
           {/* Description */}
           <div>
-            <label htmlFor="description" className="block text-sm font-medium text-gray-700 mb-2">
+            <label htmlFor="description" className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Description (Optional)
             </label>
             <textarea
@@ -132,19 +131,19 @@ export function Report() {
               onChange={(e) => setDescription(e.target.value)}
               rows={4}
               placeholder="Provide additional details about the issue..."
-              className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
+              className="w-full px-4 py-3 border border-gray-300 dark:border-gray-600 dark:bg-gray-900 dark:text-white rounded-lg focus:ring-2 focus:ring-green-500 focus:border-transparent"
             />
           </div>
 
           {/* Photo Upload */}
           <div>
-            <label className="block text-sm font-medium text-gray-700 mb-2">
+            <label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
               Add Photo (Optional)
             </label>
-            <div className="border-2 border-dashed border-gray-300 rounded-lg p-6 text-center hover:border-gray-400 transition-colors">
-              <Camera className="w-8 h-8 text-gray-400 mx-auto mb-2" />
-              <p className="text-sm text-gray-600 mb-2">Click to upload or drag and drop</p>
-              <p className="text-xs text-gray-500">PNG, JPG up to 10MB</p>
+            <div className="border-2 border-dashed border-gray-300 dark:border-gray-600 rounded-lg p-6 text-center hover:border-gray-400 dark:hover:border-gray-400 transition-colors">
+              <Camera className="w-8 h-8 text-gray-400 dark:text-gray-500 mx-auto mb-2" />
+              <p className="text-sm text-gray-600 dark:text-gray-400 mb-2">Click to upload or drag and drop</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400">PNG, JPG up to 10MB</p>
               <input type="file" accept="image/*" className="hidden" />
             </div>
           </div>
